@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DC² — Live + Love + Care</title>
+<meta name="description" content="DC Squared supports small businesses, culture, community connection and food access across Northeast Washington, DC.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17202a;
+  --muted:#53606b;
+  --paper:#fbf8f1;
+  --white:#fff;
+  --blue:#2457d6;
+  --blue-dark:#18398e;
+  --yellow:#f4c542;
+  --coral:#e8664a;
+  --plum:#57345f;
+  --mint:#dce9df;
+  --line:#d9d4ca;
+  --max:1260px;
+  --sans:"DM Sans",Arial,sans-serif;
+  --serif:"Fraunces",Georgia,serif;
+  --mono:"IBM Plex Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+.skip{position:absolute;left:-9999px}.skip:focus{left:20px;top:20px;z-index:999;background:var(--ink);color:#fff;padding:10px 14px}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(251,248,241,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .2s ease}
+.site-header.is-scrolled{box-shadow:0 10px 26px -20px rgba(23,32,42,.4)}
+.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{text-decoration:none;display:flex;align-items:flex-start;gap:13px}
+.brand-mark{font-size:30px;font-weight:900;letter-spacing:-.07em;line-height:1}.brand-mark sup{font-size:13px;top:-8px;position:relative}
+.brand-tag{font:600 10px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;border-left:1px solid var(--line);padding-left:13px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:23px}.nav-links a{text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-donate{background:var(--blue);color:#fff!important;padding:11px 17px}
+.menu{display:none;border:0;background:none;font-size:28px}
+
+/* Be Supported dropdown (desktop) */
+details.dropdown{position:relative}
+details.dropdown summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
+details.dropdown summary::-webkit-details-marker{display:none}
+details.dropdown summary:hover,details.dropdown summary.active{color:var(--blue)}
+details.dropdown .caret{width:10px;height:10px;transition:transform .15s ease}
+details.dropdown[open] .caret{transform:rotate(180deg)}
+.dropdown-menu{position:absolute;top:calc(100% + 18px);left:0;min-width:222px;background:#fff;border:1px solid var(--line);box-shadow:0 20px 44px -22px rgba(23,32,42,.4);padding:6px;z-index:50}
+.dropdown-menu a{display:block;padding:11px 14px;font-size:12.5px;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--muted);text-decoration:none;border-left:2px solid transparent}
+.dropdown-menu a:hover{background:var(--paper);color:var(--ink);border-left-color:var(--blue)}
+.dropdown-menu a.active{color:var(--blue);border-left-color:var(--blue);font-weight:800}
+
+/* Mobile nav + accordion */
+#mobileNav a{display:block;padding:12px 0;text-decoration:none;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line)}
+#mobileNav a.active{color:var(--blue)}
+#mobileNav details{border-bottom:1px solid var(--line)}
+#mobileNav details summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+#mobileNav details summary::-webkit-details-marker{display:none}
+#mobileNav details summary.active{color:var(--blue)}
+#mobileNav details .caret{width:12px;height:12px;transition:transform .15s ease}
+#mobileNav details[open] .caret{transform:rotate(180deg)}
+#mobileNav .sub-links{display:grid;gap:2px;padding:0 0 14px 14px}
+#mobileNav .sub-links a{border-bottom:none;padding:9px 0;font-size:12.5px;font-weight:700;text-transform:none;color:var(--muted)}
+#mobileNav .sub-links a.active{color:var(--blue);font-weight:800}
+
+/* New homepage hero: full-bleed photo carousel with a floating yellow copy card. */
+.hero{background:var(--ink)}
+.hero-stage{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:flex-end}
+.hero-photo{position:absolute;inset:0;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.1s ease}
+.hero-slide.is-active{opacity:1}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(23,32,42,.68) 0%,rgba(23,32,42,.08) 45%,rgba(23,32,42,.32) 100%)}
+.hero-dots{position:absolute;right:28px;bottom:28px;z-index:4;display:flex;gap:9px}
+.hero-dots button{width:26px;height:3px;background:rgba(255,255,255,.4);border:none;padding:0;cursor:pointer}
+.hero-dots button.is-active{background:var(--yellow)}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
+.hero-inner{position:relative;z-index:3;width:100%;padding-bottom:76px}
+.hero-copy{background:var(--yellow);max-width:560px;padding:54px 48px;box-shadow:0 26px 54px -22px rgba(0,0,0,.55)}
+.hero-kicker,.eyebrow{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.hero h1{font-size:clamp(48px,6vw,88px);line-height:.88;letter-spacing:-.06em;margin:18px 0 24px;max-width:520px}
+.hero h1 span{color:var(--blue)}
+.hero-copy p{font-size:17px;max-width:460px;margin:0 0 26px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+.btn-blue{background:var(--blue);color:#fff}.btn-dark{background:var(--ink);color:#fff}.btn-white{background:#fff;color:var(--ink)}.btn-outline{border-color:currentColor}
+.hero-bottom{background:var(--ink);color:#fff;padding:17px 0}
+.hero-bottom .container{display:flex;justify-content:space-between;gap:30px;font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.06em}.hero-bottom span:last-child{color:var(--yellow)}
+
+/* Stronger people-first editorial rhythm */
+.section{padding:95px 0}.section-blue{background:var(--blue);color:#fff}.section-yellow{background:var(--yellow)}.section-mint{background:var(--mint)}.section-plum{background:var(--plum);color:#fff}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:52px}.section h2{font:600 clamp(42px,5vw,68px)/.98 var(--serif);letter-spacing:-.04em;margin:12px 0 0}.lead{font-size:18px;color:var(--muted);max-width:610px}.section-blue .lead,.section-plum .lead{color:rgba(255,255,255,.75)}
+.people-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}.people-photo{height:520px;background:url("https://media.bizj.us/view/img/12966633/dsc07057%2A1200xx8640-4869-0-889.jpg") center/cover}.people-copy h3{font:600 42px/1 var(--serif);margin:0 0 18px}.people-copy p{font-size:17px;color:var(--muted)}.people-copy .big{font-size:25px;line-height:1.35;color:var(--ink);margin-bottom:28px}
+.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink)}.program{background:var(--paper);padding:32px;min-height:320px;display:flex;flex-direction:column}.program:nth-child(2){background:var(--yellow)}.program:nth-child(3){background:#f1d6cf}.program:nth-child(4){background:var(--mint)}.program:nth-child(5){background:#e6dded}.program:nth-child(6){background:#fff}.program .num{font:700 11px var(--mono);color:var(--blue);margin-bottom:55px}.program h3{font-size:26px;line-height:1;margin:0 0 12px}.program p{font-size:14px;color:var(--muted);margin:0 0 20px}.text-link{margin-top:auto;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;text-decoration:none}
+
+.events-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:50px}.event-feature{background:#fff}.event-photo{height:430px;background:url("https://img.apmcdn.org/a48cf92aa4342c3d147e806f4b0f08076bfb8d7d/uncropped/1917b0-2019-10-190926-nubian-hueman-01-600.jpg") center/cover}.event-body{padding:28px}.event-body h3{font:600 34px/1 var(--serif);margin:10px 0}.event-list{border-top:3px solid var(--blue)}.event-row{display:grid;grid-template-columns:115px 1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}.event-date{font:700 10px var(--mono);text-transform:uppercase;color:var(--blue)}.event-row h3{margin:0 0 5px;font-size:19px}.event-row p{margin:0;color:var(--muted);font-size:14px}
+
+.quote-band{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.quote{font:600 clamp(34px,4vw,58px)/1.05 var(--serif);letter-spacing:-.035em}.quote span{color:var(--coral)}
+.newsletter{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center}.newsletter h2{color:#fff}.newsletter p{color:rgba(255,255,255,.75);max-width:650px}
+
+/* Markets page */
+.page-hero{background:var(--plum);color:#fff;padding:92px 0}.page-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end}.page-hero h1{font:600 clamp(58px,7vw,98px)/.88 var(--serif);letter-spacing:-.06em;margin:16px 0 0}.page-hero h1 span{color:var(--yellow)}.page-hero p{font-size:19px;color:rgba(255,255,255,.78);max-width:520px}
+.market-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px}.market-intro h2{font:600 clamp(42px,5vw,65px)/.98 var(--serif);margin:12px 0}.market-intro p{font-size:17px;color:var(--muted)}.market-callout{margin-top:28px;padding:17px 0;border-top:3px solid var(--coral);font:700 11px var(--mono);text-transform:uppercase}
+.market-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}.market-card{background:#fff}.market-image{height:350px;background-size:cover;background-position:center}.market-body{padding:30px}.market-num{font:700 11px var(--mono);color:var(--blue)}.market-body h3{font:600 32px/1 var(--serif);margin:10px 0}.market-body p{color:var(--muted)}.market-meta{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0}.market-meta strong{display:block;font:700 10px var(--mono);text-transform:uppercase;margin-bottom:5px}.market-meta span{font-size:14px}
+.market-feature{background:var(--yellow)}.market-feature-grid{display:grid;grid-template-columns:1fr .9fr;gap:65px;align-items:center}.market-feature h2{font:600 clamp(42px,5vw,65px)/.98 var(--serif);margin:10px 0}.market-feature p{font-size:17px}.market-feature-photo{height:450px;background:url("https://nhm.org/sites/default/files/styles/featured_callout/public/2024-02/Prosperity%20Market%20x%20Come%20Up%20LA%20at%20Hollywood%20Park%20-096_webheader.jpg.webp") center/cover}
+.vendor{background:var(--blue);color:#fff}.vendor-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}.vendor h2{font:600 clamp(42px,5vw,62px)/.98 var(--serif);margin:10px 0}.vendor p{color:rgba(255,255,255,.75);font-size:17px;max-width:650px}
+
+.footer{background:#11171d;color:#fff;padding:52px 0 25px}.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:45px}.footer h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase}.footer p,.footer a{font-size:14px;color:rgba(255,255,255,.7)}.footer a{text-decoration:none}.footer a:hover{color:#fff}.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:40px;padding-top:18px;font:500 10px var(--mono);color:rgba(255,255,255,.5);display:flex;justify-content:space-between}
+
+@media(max-width:1000px){.nav-links{display:none}.menu{display:block}.people-grid,.events-layout,.market-feature-grid,.page-hero-grid,.market-intro{grid-template-columns:1fr}.hero-stage{min-height:640px}.programs{grid-template-columns:repeat(2,1fr)}.newsletter,.vendor-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.container{width:min(var(--max),calc(100% - 36px))}.nav{min-height:70px}.brand-tag{display:none}.hero-stage{min-height:560px}.hero-copy{padding:34px 24px;max-width:none}.hero h1{font-size:52px}.hero-bottom .container{display:block}.hero-bottom span{display:block;margin:3px 0}.section{padding:70px 0}.section-head{display:block}.programs,.market-grid,.footer-grid{grid-template-columns:1fr}.program{min-height:250px}.people-photo,.event-photo,.market-image,.market-feature-photo{height:320px}.event-row{grid-template-columns:80px 1fr}.event-row .text-link{display:none}.market-meta{grid-template-columns:1fr}.page-hero{padding:70px 0}.quote-band{grid-template-columns:1fr}.footer-bottom{display:block}.footer-bottom span{display:block;margin-bottom:8px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container nav">
+<a class="brand" href="delta_index.html"><span class="brand-mark">DC<sup>2</sup></span><span class="brand-tag">Live + Love + Care</span></a>
+<nav class="nav-links" aria-label="Primary">
+<a class="active" href="delta_index.html">Be Home</a>
+<details class="dropdown">
+  <summary>Be Supported<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+  <div class="dropdown-menu">
+    <a href="https://dcsquared.org/bladensburg-road-main-street-2/" target="_blank" rel="noopener">Bladensburg Road</a>
+    <a href="https://dcsquared.org/ria-main-street/" target="_blank" rel="noopener">Rhode Island Ave</a>
+    <a href="delta_dc2-markets.html">DC² Markets</a>
+    <a href="https://form.jotform.com/240841986985071" target="_blank" rel="noopener">Small Business Hub</a>
+  </div>
+</details>
+<a href="https://dcsquared.org/volunteer/" target="_blank" rel="noopener">Be Involved</a>
+<a href="https://dcsquared.org/be-informed/" target="_blank" rel="noopener">Be Informed</a>
+<a href="https://dcsquared.org/be-connected/" target="_blank" rel="noopener">Be Connected</a>
+<a class="nav-donate" href="https://www.paypal.com/donate/?hosted_button_id=VPWBZ9ZLJNFDQ" target="_blank" rel="noopener">Donate</a>
+</nav>
+<button class="menu" aria-label="Open menu" onclick="document.getElementById('mobileNav').style.display=document.getElementById('mobileNav').style.display==='none'?'block':'none'">☰</button>
+</div><div id="mobileNav" style="display:none;padding:0 0 20px"><div class="container" style="display:grid;gap:2px">
+<a class="active" href="delta_index.html">Be Home</a>
+<details>
+  <summary>Be Supported<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+  <div class="sub-links">
+    <a href="https://dcsquared.org/bladensburg-road-main-street-2/" target="_blank" rel="noopener">Bladensburg Road</a>
+    <a href="https://dcsquared.org/ria-main-street/" target="_blank" rel="noopener">Rhode Island Ave</a>
+    <a href="delta_dc2-markets.html">DC² Markets</a>
+    <a href="https://form.jotform.com/240841986985071" target="_blank" rel="noopener">Small Business Hub</a>
+  </div>
+</details>
+<a href="https://dcsquared.org/volunteer/" target="_blank" rel="noopener">Be Involved</a>
+<a href="https://dcsquared.org/be-informed/" target="_blank" rel="noopener">Be Informed</a>
+<a href="https://dcsquared.org/be-connected/" target="_blank" rel="noopener">Be Connected</a>
+</div></div></header>
+
+<main id="main">
+<section class="hero">
+<div class="hero-stage">
+  <div class="hero-photo" role="group" aria-roledescription="carousel" aria-label="Northeast DC highlights">
+    <div class="hero-slide is-active" style="background-image:url('https://images.nappy.co/photo/LUbfy2IGmZJEE2kr1WHtF.jpg?width=2000')" data-slide="0"></div>
+    <div class="hero-slide" style="background-image:url('https://images.nappy.co/photo/_daWfgkTNJj3aEWoJK2fZ.jpg?width=2000')" data-slide="1"></div>
+    <div class="hero-slide" style="background-image:url('https://images.nappy.co/photo/0eWjSuMVYGbOMrM-h0V1x.jpg?width=2000')" data-slide="2"></div>
+    <div class="hero-dots" role="tablist" aria-label="Highlight slides">
+      <button class="is-active" data-dot="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+      <button data-dot="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+      <button data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    </div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-kicker" id="heroKicker">Northeast Washington, DC</div>
+      <h1 id="heroHeadline">Live <span>+</span><br>Love <span>+</span><br>Care <span>=</span><br>DC<sup>2</sup></h1>
+      <p id="heroSub">A community development organization helping Northeast DC live, work, gather, create and thrive.</p>
+      <div class="actions">
+        <a class="btn btn-blue" id="heroCtaPrimary" href="#supported">Explore DC²</a>
+        <a class="btn btn-outline" id="heroCtaSecondary" href="https://dcsquared.org/volunteer/" target="_blank">Get Involved</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hero-bottom"><div class="container"><span>Distinct Corridors. Developing Communities.</span><span>Bladensburg Road + Rhode Island Avenue</span></div></div>
+</section>
+
+<section class="section" id="supported"><div class="container people-grid">
+<div class="people-photo" aria-label="Local business owners outside a storefront"></div>
+<div class="people-copy"><div class="eyebrow">Be Home / People First</div><h3>Neighborhoods are built by people.</h3><p class="big">DC² is about the people behind the storefronts, the makers behind the art, the neighbors behind the events — and the everyday connections that make a corridor feel like home.</p><p>We support small businesses, promote local culture, improve food access and create opportunities for residents and visitors to participate in the life of Northeast DC.</p><a class="btn btn-dark" href="https://dcsquared.org/be-informed/">Learn about DC²</a></div>
+</div></section>
+
+<section class="section section-mint" id="involved"><div class="container">
+<div class="section-head"><div><div class="eyebrow">Be Supported</div><h2>Make room for what<br>makes DC, DC.</h2></div><p class="lead">From Main Street programs to markets and arts programming, DC² creates practical ways to strengthen the neighborhood.</p></div>
+<div class="programs">
+<article class="program"><div class="num">01 / MAIN STREET</div><h3>Bladensburg Road</h3><p>Business support, beautification, resources and community-led initiatives along the corridor.</p><a class="text-link" href="https://dcsquared.org/bladensburg-road-main-street-2/">Explore →</a></article>
+<article class="program"><div class="num">02 / MAIN STREET</div><h3>Rhode Island Avenue</h3><p>Support, visibility, marketing and resources that help local enterprises and the historic corridor thrive.</p><a class="text-link" href="https://dcsquared.org/ria-main-street/">Explore →</a></article>
+<article class="program"><div class="num">03 / FOOD ACCESS</div><h3>DC² Markets</h3><p>Farm-fresh groceries, local goods, warm food and community connections closer to home.</p><a class="text-link" href="delta_dc2-markets.html">Visit markets →</a></article>
+<article class="program"><div class="num">04 / SMALL BUSINESS</div><h3>Business Hub</h3><p>Resources, grants, food-access initiatives and opportunities for local entrepreneurs.</p><a class="text-link" href="https://form.jotform.com/240841986985071" target="_blank">Get support →</a></article>
+<article class="program"><div class="num">05 / ARTS + CULTURE</div><h3>Art All Night</h3><p>A multidisciplinary experience connecting creatives and audiences across the main streets.</p><a class="text-link" href="https://dcsquared.org/aan/">Explore →</a></article>
+<article class="program"><div class="num">06 / COMMUNITY</div><h3>Be Connected</h3><p>Find local businesses, volunteer, join events and stay connected to what is happening.</p><a class="text-link" href="https://dcsquared.org/be-connected/">Connect →</a></article>
+</div></div></section>
+
+<section class="section" id="informed"><div class="container">
+<div class="section-head"><div><div class="eyebrow">Be Informed</div><h2>People make the calendar.</h2></div><a class="text-link" href="https://dcsquared.org/general-events/">View all events →</a></div>
+<div class="events-layout">
+<article class="event-feature"><div class="event-photo"></div><div class="event-body"><div class="eyebrow">Arts + Culture</div><h3>Neighborhood stories deserve a stage.</h3><p>DC²'s events turn porches, storefronts, galleries, markets and public spaces into places for people to gather.</p><a class="text-link" href="https://dcsquared.org/ria-porchfest/">Explore PorchFest →</a></div></article>
+<div class="event-list">
+<div class="event-row"><div class="event-date">Weekly<br>Jun–Oct</div><div><h3>DC² Markets</h3><p>Farm-fresh groceries and a hot cup of Joe through neighborhood market partnerships.</p></div><a class="text-link" href="delta_dc2-markets.html">View →</a></div>
+<div class="event-row"><div class="event-date">Monthly</div><div><h3>Edgewood Market</h3><p>Back at Bryant Street on the Plaza, every second and fourth Saturday.</p></div><a class="text-link" href="https://dcsquared.org/">View →</a></div>
+<div class="event-row"><div class="event-date">September</div><div><h3>Art All Night</h3><p>Galleries, studios and pop-up installations stay open late for one night of neighborhood art.</p></div><a class="text-link" href="https://dcsquared.org/aan/">View →</a></div>
+<div class="event-row"><div class="event-date">December</div><div><h3>Procrastinator's Holiday Market</h3><p>Eleven years running — a neighborhood tradition built around shopping small.</p></div><a class="text-link" href="http://www.procrastinatorsmarket.com" target="_blank">View →</a></div>
+</div></div></div></section>
+
+<section class="section section-yellow"><div class="container quote-band"><div class="quote">“The neighborhood is not just a place. <span>It is the people who show up.</span>”</div><div><div class="eyebrow">Be Involved</div><h2>Show up for the people and places that make Northeast DC distinctive.</h2><p class="lead">Volunteer, shop local, attend an event, join a market or help a small business grow.</p><a class="btn btn-blue" href="https://dcsquared.org/volunteer/">Get involved</a></div></div></section>
+
+<section class="section section-plum" id="connected"><div class="container newsletter"><div><div class="eyebrow" style="color:var(--yellow)">Be Connected</div><h2>Be Squared.</h2><p>Get neighborhood news, market updates, events and opportunities delivered to your inbox.</p></div><a class="btn btn-white" href="https://mailchi.mp/dcsquared/subscribe" target="_blank">Subscribe</a></div></section>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid">
+<div><div class="brand"><span class="brand-mark" style="color:#fff">DC<sup>2</sup></span></div><p>Distinct Corridors. Developing Communities.</p><p>Northeast Washington, DC</p></div>
+<div><h3>Explore</h3><p><a href="delta_index.html">Be Home</a></p><p><a href="#supported">Be Supported</a></p><p><a href="#involved">Be Involved</a></p><p><a href="#informed">Be Informed</a></p></div>
+<div><h3>Connect</h3><p><a href="https://dcsquared.org/be-connected/">Contact DC²</a></p><p><a href="https://dcsquared.org/volunteer/">Volunteer</a></p><p><a href="https://www.instagram.com/riamainstreet/" target="_blank">Instagram</a></p></div>
+</div><div class="footer-bottom"><span>© <script>document.write(new Date().getFullYear())</script> DC Squared</span><span>Live + Love + Care = DC²</span></div></div></footer>
+<script>
+(function(){
+  var slides = [
+    {
+      kicker: "Northeast Washington, DC",
+      headline: 'Live <span>+</span><br>Love <span>+</span><br>Care <span>=</span><br>DC<sup>2</sup>',
+      sub: "A community development organization helping Northeast DC live, work, gather, create and thrive.",
+      ctaPrimary: { text: "Explore DC²", href: "#supported" },
+      ctaSecondary: { text: "Get Involved", href: "https://dcsquared.org/volunteer/", target: "_blank" }
+    },
+    {
+      kicker: "Bladensburg Road + Rhode Island Ave",
+      headline: 'Two Corridors.<br><span>One Community.</span>',
+      sub: "Storefront support, beautification, and hands-on coaching for the small businesses that give Northeast DC its character.",
+      ctaPrimary: { text: "Meet the Programs", href: "#involved" },
+      ctaSecondary: { text: "Browse the Directory", href: "https://dcsquared.org/be-connected/", target: "_blank" }
+    },
+    {
+      kicker: "DC² Markets + Food Access",
+      headline: 'Fresh Food.<br><span>Closer to Home.</span>',
+      sub: "Farm-fresh groceries, local goods, and warm food — building food access across Northeast DC's neighborhood markets.",
+      ctaPrimary: { text: "Visit the Markets", href: "delta_dc2-markets.html" },
+      ctaSecondary: { text: "See What's Coming Up", href: "#informed" }
+    }
+  ];
+
+  var heroPhoto = document.querySelector('.hero-photo');
+  if (!heroPhoto) return;
+
+  var slideEls = heroPhoto.querySelectorAll('.hero-slide');
+  var dotEls = heroPhoto.querySelectorAll('.hero-dots button');
+  var kickerEl = document.getElementById('heroKicker');
+  var headlineEl = document.getElementById('heroHeadline');
+  var subEl = document.getElementById('heroSub');
+  var ctaPrimaryEl = document.getElementById('heroCtaPrimary');
+  var ctaSecondaryEl = document.getElementById('heroCtaSecondary');
+
+  var index = 0;
+  var timer;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setCta(el, cta){
+    el.textContent = cta.text;
+    el.href = cta.href;
+    if (cta.target) { el.setAttribute('target', cta.target); }
+    else { el.removeAttribute('target'); }
+  }
+
+  function goTo(i){
+    index = i;
+    slideEls.forEach(function(el, idx){ el.classList.toggle('is-active', idx === i); });
+    dotEls.forEach(function(el, idx){
+      el.classList.toggle('is-active', idx === i);
+      el.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+    });
+    var s = slides[i];
+    kickerEl.textContent = s.kicker;
+    headlineEl.innerHTML = s.headline;
+    subEl.textContent = s.sub;
+    setCta(ctaPrimaryEl, s.ctaPrimary);
+    setCta(ctaSecondaryEl, s.ctaSecondary);
+  }
+
+  function start(){
+    if (reduceMotion) return;
+    timer = setInterval(function(){ goTo((index + 1) % slides.length); }, 7000);
+  }
+  function stop(){ clearInterval(timer); }
+
+  dotEls.forEach(function(el, idx){
+    el.addEventListener('click', function(){ goTo(idx); stop(); start(); });
+  });
+
+  heroPhoto.addEventListener('mouseenter', stop);
+  heroPhoto.addEventListener('mouseleave', start);
+  heroPhoto.addEventListener('focusin', stop);
+  heroPhoto.addEventListener('focusout', start);
+
+  start();
+})();
+</script>
+<script>
+(function(){
+  var header = document.querySelector('.site-header');
+  function onScroll(){ if (header) header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  var allDetails = document.querySelectorAll('.site-header details');
+  document.addEventListener('click', function(e){
+    allDetails.forEach(function(d){ if (d.open && !d.contains(e.target)) d.open = false; });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { allDetails.forEach(function(d){ if (d.open) d.open = false; }); }
+  });
+})();
+</script>
+</body></html>
